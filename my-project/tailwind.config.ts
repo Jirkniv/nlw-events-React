@@ -14,5 +14,10 @@ export default {
       },
     },
   },
+  safelist:[
+    {
+      pattern: /:has\(/,
+    },
+    ],
   plugins: [],
 } satisfies Config;
