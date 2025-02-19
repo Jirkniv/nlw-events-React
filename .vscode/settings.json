@@ -9,14 +9,16 @@
           
         },
         "[typescriptreact]": {
-            "editor.defaultFormatter": "biomejs.biome"
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
             
           },
           
             "editor.codeActionsOnSave": {
               "quickfix.biome": "explicit",
               "source.organizeImports.biome": "explicit"
-            }
+            },
+            "editor.formatOnSave": true,
+            "editor.formatOnPaste": true,
           
         
       }

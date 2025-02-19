@@ -10,9 +10,10 @@
 @theme{
 
       /* Colors */
-  ----color-blue-100: #6F6DE2;
-  ----color-purple: #9871F3;
-  ----color-danger: #f05d6c;
+   --color-blue: #6F9DE2;
+  --color-purple: #9871F3;
+
+  --color-danger: #F05D6C;
 
   ----color-gray-100: #DAE4F2;
   ----color-gray-200: #C8D0DA;
