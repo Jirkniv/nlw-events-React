@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Oxanium, Montserrat } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const oxanium = Oxanium({
+  weight: ["500" , "600"],
   subsets: ["latin"],
-});
+  variable: '--font-oxanium'
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+
+const montserrat = Montserrat({
+  weight: ["400" , "500"],
   subsets: ["latin"],
-});
+  variable: '--font-montserrat'
+
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,9 +27,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${montserrat.variable} ${oxanium.variable} `}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="bg-gray-900 text-gray-100 antialiasedf"
       >
         {children}
       </body>
