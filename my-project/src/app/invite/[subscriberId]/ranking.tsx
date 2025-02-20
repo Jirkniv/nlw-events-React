@@ -1,7 +1,7 @@
 import React from "react";
-import Medal_1 from "../../assets/Medal_1.png";
-import Medal_2 from "../../assets/Medal_2.png";
-import Medal_3 from "../../assets/Medal_3.png";
+import Medal_1 from "../../../assets/Medal_1.png";
+import Medal_2 from "../../../assets/Medal_2.png";
+import Medal_3 from "../../../assets/Medal_3.png";
 import Image from "next/image";
 
 export function Ranking() {
