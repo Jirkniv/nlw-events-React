@@ -34,7 +34,7 @@ export function SubscriptionForm() {
 
   return (
     <form
-      className="bg-gray-700 border-gray-600 rounded-2xl p-8 rounded-2xl space-y-6 w-full md:max-w-[440px]"
+      className="bg-gray-700 border-gray-600 p-8 rounded-2xl space-y-6 w-full md:max-w-[440px]"
       onSubmit={handleSubmit(onSubscribe)}
     >
       <h2 className="font-heading font-semibold text-xl text-gray-200">

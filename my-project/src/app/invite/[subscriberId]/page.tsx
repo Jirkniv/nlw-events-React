@@ -40,14 +40,13 @@ const page = async (props: InvitePageProps) => {
             </p>
           </div>
 
-          <InviteLinkInput  inviteLink={inviteLink}/>
+          <InviteLinkInput inviteLink={inviteLink} />
 
-          <Stats />
+          <Stats subscriberId={subscriberId} />
         </div>
       </div>
 
       <Ranking />
-      
     </div>
   );
 };
