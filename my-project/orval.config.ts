@@ -1,17 +1,17 @@
 import { defineConfig } from 'orval'
 
 export default defineConfig({
-    api:{
-        input:"http://localhost:3333/docs/json",
-        output:{
-            target:'./src/http/api.ts',
+    api: {
+        input: "http://localhost:8080/v3/api-docs",  
+        output: {
+            target: './src/http/api.ts',
             client: 'fetch',
-            httpClient:'fetch',
+            httpClient: 'fetch',
             clean: true,
-            baseUrl: "http://localhost:3333",
+            baseUrl: "http://localhost:8080", 
 
             override: {
-                fetch:{
+                fetch: {
                     includeHttpResponseReturnType: false,
                 }
             }

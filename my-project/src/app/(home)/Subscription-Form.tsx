@@ -6,7 +6,7 @@ import { InputRoot, InputIcon, InputField } from "../../components/input";
 import { useForm } from "react-hook-form";
 import {z} from 'zod';
 import {zodResolver} from '@hookform/resolvers/zod'
-import { subscribeToEvent } from "@/http/api";
+import { createSubscription, createSubscription1 } from "@/http/api";
 import { useRouter, useSearchParams } from "next/navigation";
  
 const subscriptionSchema = z.object({
@@ -24,12 +24,25 @@ export function SubscriptionForm() {
     resolver: zodResolver(subscriptionSchema),
   });
 
-  async function onSubscribe({name, email}: SubscriptionSchema){
-    const referrer = searchParams.get('referrer')
+  async function onSubscribe({ name, email }: SubscriptionSchema) {
+    const referrer = searchParams.get("userId"); 
 
-    const { subscriberId } = await subscribeToEvent({ name, email, referrer });
+    let subscriberId;
 
-    router.push(`/invite/${subscriberId}`)
+    if (referrer) {
+      // Se houver referrer, chamamos createSubscription com userId
+      const response = await createSubscription("eventName", Number(referrer), {
+        name,
+        email,
+      });
+      subscriberId = response.subscriberId;
+    } else {
+      // Caso contrário, chamamos createSubscription1
+      const response = await createSubscription1("eventName", { name, email });
+      subscriberId = response.subscriberId;
+    }
+
+    router.push(`/invite/${subscriberId}`);
   }
 
   return (

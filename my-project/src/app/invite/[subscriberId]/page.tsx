@@ -6,14 +6,14 @@ import { InviteLinkInput } from "./invite-link-input";
 
 interface InvitePageProps{
   params: Promise<{
-    subscriberId:string
+    subscriberId: number
   }>
 }
 
 const page = async (props: InvitePageProps) => {
 
   const {subscriberId} = await props.params
-  const inviteLink = `http://localhost:3333/invites/${subscriberId}`
+  const inviteLink = `http://localhost:3000/invites/${subscriberId}`
 
   return (
     <div className="min-h-dvh flex items-center justify-between gap-16   flex-col md:flex-row">
@@ -42,7 +42,7 @@ const page = async (props: InvitePageProps) => {
 
           <InviteLinkInput inviteLink={inviteLink} />
 
-          <Stats subscriberId={subscriberId} />
+          <Stats subscriberId={subscriberId} prettyName="codecraft-summit-2025" />
         </div>
       </div>
 
