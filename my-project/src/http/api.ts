@@ -55,10 +55,12 @@ export type GenerateRankingByEvent422 = { [key: string]: unknown };
 export type GenerateRankingByEvent500 = { [key: string]: unknown };
 
 export interface GenerateRankingByEventandUser200 {
-  subscribers: number;
+  item: {
+    Subscribers: number;
+    userId: number;
+    name: string;
+  };
   position: number;
-  userId: number;
-  name: string;
 }
 
 export type GenerateRankingByEventandUser400 = { [key: string]: unknown };

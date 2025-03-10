@@ -19,8 +19,8 @@ export async function Stats({ subscriberId, prettyName }: StatsProps) {
 
   console.log("Dados do ranking:", userRankingData);
   
-  // Acessando diretamente os dados, pois não há 'item'
-  const inviteCount = userRankingData.subscribers ?? 0;
+
+  const inviteCount = userRankingData.item?.Subscribers ?? 0;
   const accessCount = inviteCount * 2;
   const rankingPosition = userRankingData.position ?? "-";
 
