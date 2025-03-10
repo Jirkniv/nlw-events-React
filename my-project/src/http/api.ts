@@ -72,7 +72,7 @@ export type GenerateRankingByEventandUser500 = { [key: string]: unknown };
 
 
 /**
- * @summary Realiza a insçriçao em um evento
+ * @summary Realiza a insçriçao em um evento com indicação
  */
 export const getCreateSubscriptionUrl = (prettyName: string,
     userId: number,) => {
