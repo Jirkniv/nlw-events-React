@@ -1,58 +1,41 @@
-
 import React from "react";
+import Image from "next/image";
 import Medal_1 from "../../../assets/Medal_1.png";
 import Medal_2 from "../../../assets/Medal_2.png";
 import Medal_3 from "../../../assets/Medal_3.png";
-import Image from "next/image";
-import { generateRankingByEventandUser } from "@/http/api";
+import { generateRankingByEvent } from "@/http/api";
 
 interface RankingProps {
   prettyName: string;
-  userId: number;
 }
-export async function Ranking({ prettyName, userId }: RankingProps) {
-  const ranking = await generateRankingByEventandUser(prettyName, userId);
+
+export async function Ranking({ prettyName }: RankingProps) {
+  const ranking = await generateRankingByEvent(prettyName);
+
+  // Pegando os três primeiros colocados
+  const top3 = ranking.slice(0, 3);
+
+  // Medalhas associadas às posições
+  const medals = [Medal_1, Medal_2, Medal_3];
 
   return (
     <div className="w-full max-w-[440px] space-y-5">
       <h2 className="text-gray-200 leading-none text-heading text-xl font-semibold">
-        Ranking de indicações
+        Ranking de Indicações
       </h2>
       <div className="space-y-4">
-        <div
-          key={ranking.userId}
-          className="relative rounded-xl bg-gray-700 border border-gray-600 p-6 flex flex-col justify-center"
-        >
-          <span className="text-sm text-gray-300 leading-none">
-            <span className="font-semibold">{ranking.position}º</span> |{" "}
-            {ranking.name}
-          </span>
-          <span className="font-heading leading-none text-2xl font-semibold text-gray-200">
-            {ranking.subscribers}
-          </span>
-
-          {ranking.position === 1 && (
-            <Image
-              src={Medal_1}
-              alt="Imagem da Medalha"
-              className="absolute top-0 right-8"
-            />
-          )}
-          {ranking.position === 2 && (
-            <Image
-              src={Medal_2}
-              alt="Imagem da Medalha"
-              className="absolute top-0 right-8"
-            />
-          )}
-          {ranking.position === 3 && (
-            <Image
-              src={Medal_3}
-              alt="Imagem da Medalha"
-              className="absolute top-0 right-8"
-            />
-          )}
-        </div>
+        {top3.map((user, index) => (
+          <div
+            key={user.userId}
+            className="flex items-center gap-4 p-3 bg-gray-700 rounded-lg"
+          >
+            <Image src={medals[index]} alt={`Medalha ${index + 1}`} width={40} height={40} />
+            <div className="text-gray-100">
+              <p className="text-lg font-semibold">{user.name}</p>
+              <p className="text-sm text-gray-400">{user.Subscribers} indicações</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

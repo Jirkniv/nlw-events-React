@@ -46,7 +46,7 @@ const page = async (props: InvitePageProps) => {
         </div>
       </div>
 
-      <Ranking />
+      <Ranking prettyName="codecraft-summit-2025" />
     </div>
   );
 };

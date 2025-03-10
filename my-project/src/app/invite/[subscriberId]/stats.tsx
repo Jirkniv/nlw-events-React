@@ -1,7 +1,11 @@
-
 import React from "react";
 import { MousePointerClick, Medal, BadgeCheck } from "lucide-react";
-import { generateRankingByEventandUser } from "@/http/api";
+import {
+  generateRankingByEventandUser,
+  GenerateRankingByEventandUser200,
+} from "@/http/api";
+
+
 
 interface StatsProps {
   subscriberId: number;
@@ -10,14 +14,17 @@ interface StatsProps {
 
 export async function Stats({ subscriberId, prettyName }: StatsProps) {
   // Buscar os dados da API
-  const userRankingData = await generateRankingByEventandUser(prettyName, subscriberId);
+  const userRankingData: GenerateRankingByEventandUser200 =
+    await generateRankingByEventandUser(prettyName, subscriberId);
 
-  // Como a nova API não possui inviteClicks, usamos inviteCount * 2
-  const inviteCount = (userRankingData.subscribers) ?? 0;
+  console.log("Dados do ranking:", userRankingData);
+  
+  // Acessando diretamente os dados, pois não há 'item'
+  const inviteCount = userRankingData.subscribers ?? 0;
   const accessCount = inviteCount * 2;
-
-  // Determinar a posição do ranking
   const rankingPosition = userRankingData.position ?? "-";
+
+  console.log("Dados do ranking:", inviteCount, accessCount, rankingPosition);
 
   return (
     <div className="grid gap-3 md:grid-cols-3">
