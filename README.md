@@ -73,11 +73,9 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o 
 Este projeto depende de uma API backend. Para garantir a funcionalidade completa, clone e execute o repositório do backend:
 
 ```bash
-git clone https://github.com/your-username/your-backend-repo.git
-cd your-backend-repo
-npm install
-npm run dev
+git clone https://github.com/Jirkniv/nlw-events-Java.git
 ```
+Siga os passos disponiveis em https://github.com/Jirkniv/nlw-events-Java
 
 Certifique-se de que o backend está rodando antes de iniciar o frontend.
 
